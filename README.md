@@ -10,6 +10,7 @@ To perform quick analysis and checks on audit csv files
 **res<-auditcheck(pathtofolder = "audit/", excluded= c("q0_gps","note_intro","consensus_note"))**
 ## arguments
 pathtofolder: where all your audit folders are stored (every audit folder should have an uuid name)
+
 excluded: If you don't want to take into consideration some variable in the survey duration check, please specify the **XML** variables names
 ## Output
 The output is a dataframe with the following variables:
