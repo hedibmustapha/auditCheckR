@@ -36,8 +36,8 @@ calculate_survey_duration <- function(endtime, startime){
 #' @param  startime column start
 #'
 #' @return Duration in minutes
-form_lifetime <- function(endtime, startime){
-  as.numeric(round((tail(endtime[!is.na(endtime)],1) - startime[1])/60000,digits = 2))
+form_lifetime <- function(startime){
+  as.numeric(round((tail(startime,1) - startime[1])/60000,digits = 2))
 }
 
 #' Count occurrence of a specified type
@@ -67,7 +67,7 @@ auditcheck<-function(pathtofolder, excluded=NULL){
     return(x)
   })
   start_to_exit<-lapply(allaudit, function(x){
-    form_lifetime(x$end, x$start)
+    form_lifetime(x$start)
   }) %>% unlist()
   time_on_questions<-lapply(allaudit, function(x){
     calculate_survey_duration(x$end[x$event %in% c("question","group questions")],
